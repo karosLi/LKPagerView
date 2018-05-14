@@ -10,4 +10,20 @@
 
 @implementation LKPagerViewLayoutAttributes
 
+- (BOOL)isEqual:(LKPagerViewLayoutAttributes *)object {
+    if (![object isKindOfClass:[LKPagerViewLayoutAttributes class]]) {
+        return NO;
+    }
+    
+    BOOL isEqual = [super isEqual:object];
+    isEqual = isEqual && (self.position == object.position);
+    return isEqual;
+}
+
+- (id)copyWithZone:(NSZone *)zone {
+    LKPagerViewLayoutAttributes *copy = [super copyWithZone:zone];
+    copy.position = self.position;
+    return copy;
+}
+
 @end

@@ -10,4 +10,6 @@
 
 @interface LKPagerViewLayoutAttributes : UICollectionViewLayoutAttributes
 
+@property (nonatomic, assign) CGFloat position;
+
 @end

@@ -28,7 +28,7 @@
 // UIControlState: CGAffineTransform
 @property (nonatomic, strong) NSMutableDictionary<NSNumber *, NSValue *> *transforms;
 
-@property (nonatomic, weak) UIView *contentView;
+@property (nonatomic, strong) UIView *contentView;
 
 @property (nonatomic, assign) BOOL needsUpdateIndicators;
 @property (nonatomic, assign) BOOL needsCreateIndicators;

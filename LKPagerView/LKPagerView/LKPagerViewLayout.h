@@ -7,7 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LKPagerView.h"
 
 @interface LKPagerViewLayout : UICollectionViewLayout
+
+@property (nonatomic, assign) CGSize contentSize;
+@property (nonatomic, assign) CGFloat leadingSpacing;
+@property (nonatomic, assign) CGFloat itemSpacing;
+@property (nonatomic, assign) BOOL needsReprepare;
+
+@property (nonatomic, assign) LKPagerViewScrollDirection scrollDirection;
 
 @end
