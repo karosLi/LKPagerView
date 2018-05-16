@@ -69,7 +69,7 @@
         return;
     }
     
-    if (!self.needsReprepare || !CGSizeEqualToSize(self.collectionViewSize, collectionView.frame.size)) {
+    if (!self.needsReprepare && CGSizeEqualToSize(self.collectionViewSize, collectionView.frame.size)) {
         return;
     }
     
@@ -129,8 +129,7 @@
     CGFloat origin = startPosition;
     CGFloat maxPosition = self.scrollDirection == LKPagerViewScrollDirectionHorizontal ? MIN(CGRectGetMaxX(rect1),self.contentSize.width-self.actualItemSize.width-self.leadingSpacing) : MIN(CGRectGetMaxY(rect1),self.contentSize.height-self.actualItemSize.height-self.leadingSpacing);
     // https://stackoverflow.com/a/10335601/2398107
-    CGFloat origin_maxPosition = 0;
-    while (origin_maxPosition <= MAX(100.0 * DBL_EPSILON * fabs(origin+maxPosition), DBL_MIN)) {
+    while ((origin - maxPosition) <= MAX(100.0 * DBL_EPSILON * fabs(origin+maxPosition), DBL_MIN)) {
         NSIndexPath *indexPath = [NSIndexPath indexPathForItem:itemIndex%self.numberOfItems inSection:itemIndex/self.numberOfItems];
         LKPagerViewLayoutAttributes *attributes = (LKPagerViewLayoutAttributes *)[self layoutAttributesForItemAtIndexPath:indexPath];
         [self applyTransformToAttributes:attributes withTransformer:[self pagerView].transformer];
@@ -142,9 +141,8 @@
     return layoutAttributes;
 }
 
-- (LKPagerViewLayoutAttributes *)layoutAttributesForItemAtIndexPath:(NSIndexPath *)indexPath {
-    LKPagerViewLayoutAttributes *attributes = [[LKPagerViewLayoutAttributes alloc] init];
-    attributes.indexPath = indexPath;
+- (UICollectionViewLayoutAttributes *)layoutAttributesForItemAtIndexPath:(NSIndexPath *)indexPath {
+    LKPagerViewLayoutAttributes *attributes = [LKPagerViewLayoutAttributes layoutAttributesForCellWithIndexPath:indexPath];
     CGRect frame = [self frameForIndexPath:indexPath];
     CGPoint center = CGPointMake(CGRectGetMidX(frame), CGRectGetMidY(frame));
     attributes.center = center;
@@ -163,33 +161,29 @@
     CGFloat proposedContentOffsetY = 0;
     
     if (self.scrollDirection == LKPagerViewScrollDirectionHorizontal) {
-        proposedContentOffsetX = proposedContentOffset.x;
+        CGFloat translation = -[collectionView.panGestureRecognizer translationInView:collectionView].x;
+        CGFloat offset = round(proposedContentOffset.x/self.itemSpacing)*self.itemSpacing;
+        CGFloat minFlippingDistance = MIN(0.5 * self.itemSpacing,150);
+        CGFloat originalContentOffsetX = collectionView.contentOffset.x - translation;
+        if (fabs(translation) <= minFlippingDistance) {
+            if (fabs(velocity.x) >= 0.3 && fabs(proposedContentOffset.x-originalContentOffsetX) <= self.itemSpacing*0.5) {
+                offset += self.itemSpacing * (velocity.x)/fabs(velocity.x);
+            }
+        }
+        proposedContentOffsetX = offset;
         proposedContentOffsetY = proposedContentOffset.y;
     } else {
-        {
-            CGFloat translation = -[collectionView.panGestureRecognizer translationInView:collectionView].x;
-            CGFloat offset = round(proposedContentOffset.x/self.itemSpacing)*self.itemSpacing;
-            CGFloat minFlippingDistance = MIN(0.5 * self.itemSpacing,150);
-            CGFloat originalContentOffsetX = collectionView.contentOffset.x - translation;
-            if (fabs(translation) <= minFlippingDistance) {
-                if (fabs(velocity.x) >= 0.3 && fabs(proposedContentOffset.x-originalContentOffsetX) <= self.itemSpacing*0.5) {
-                    offset += self.itemSpacing * (velocity.x)/fabs(velocity.x);
-                }
+        proposedContentOffsetX = proposedContentOffset.x;
+        CGFloat translation = -[collectionView.panGestureRecognizer translationInView:collectionView].y;
+        CGFloat offset = round(proposedContentOffset.y/self.itemSpacing)*self.itemSpacing;
+        CGFloat minFlippingDistance = MIN(0.5 * self.itemSpacing,150);
+        CGFloat originalContentOffsetY = collectionView.contentOffset.y - translation;
+        if (fabs(translation) <= minFlippingDistance) {
+            if (fabs(velocity.y) >= 0.3 && fabs(proposedContentOffset.y-originalContentOffsetY) <= self.itemSpacing*0.5) {
+                offset += self.itemSpacing * (velocity.y)/fabs(velocity.y);
             }
-            proposedContentOffsetX = offset;
         }
-        {
-            CGFloat translation = -[collectionView.panGestureRecognizer translationInView:collectionView].y;
-            CGFloat offset = round(proposedContentOffset.y/self.itemSpacing)*self.itemSpacing;
-            CGFloat minFlippingDistance = MIN(0.5 * self.itemSpacing,150);
-            CGFloat originalContentOffsetY = collectionView.contentOffset.y - translation;
-            if (fabs(translation) <= minFlippingDistance) {
-                if (fabs(velocity.y) >= 0.3 && fabs(proposedContentOffset.y-originalContentOffsetY) <= self.itemSpacing*0.5) {
-                    offset += self.itemSpacing * (velocity.y)/fabs(velocity.y);
-                }
-            }
-            proposedContentOffsetY = offset;
-        }
+        proposedContentOffsetY = offset;
     }
     
     return CGPointMake(proposedContentOffsetX, proposedContentOffsetY);
@@ -211,9 +205,8 @@
     CGFloat contentOffsetX = 0;
     CGFloat contentOffsetY = 0;
     if (self.scrollDirection == LKPagerViewScrollDirectionHorizontal) {
-        
-    } else {
         contentOffsetX = origin.x - (collectionView.frame.size.width*0.5-self.actualItemSize.width*0.5);
+    } else {
         contentOffsetY = origin.y - (collectionView.frame.size.height*0.5-self.actualItemSize.height*0.5);
     }
     
@@ -226,10 +219,10 @@
     CGFloat originX = 0;
     CGFloat originY = 0;
     if (self.scrollDirection == LKPagerViewScrollDirectionHorizontal) {
-        originX = (self.collectionView.frame.size.width-self.actualItemSize.width)*0.5;
+        originX = self.leadingSpacing + (numberOfItems)*self.itemSpacing;
         originY = (self.collectionView.frame.size.height-self.actualItemSize.height)*0.5;
     } else {
-        originX = self.leadingSpacing + (numberOfItems)*self.itemSpacing;
+        originX = (self.collectionView.frame.size.width-self.actualItemSize.width)*0.5;
         originY = self.leadingSpacing + (numberOfItems)*self.itemSpacing;
     }
     

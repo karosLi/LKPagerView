@@ -1,9 +1,9 @@
 //
 //  AppDelegate.m
-//  LKPagerView
+//  FSPagerViewExample-Objc
 //
-//  Created by karos li on 2018/5/7.
-//  Copyright © 2018年 karos. All rights reserved.
+//  Created by Wenchao Ding on 19/01/2017.
+//  Copyright © 2017 Wenchao Ding. All rights reserved.
 //
 
 #import "AppDelegate.h"

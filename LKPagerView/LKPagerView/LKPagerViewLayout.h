@@ -18,4 +18,8 @@
 
 @property (nonatomic, assign) LKPagerViewScrollDirection scrollDirection;
 
+- (void)forceInvalidate;
+- (CGPoint)contentOffsetForIndexPath:(NSIndexPath *)indexPath;
+- (CGRect)frameForIndexPath:(NSIndexPath *)indexPath;
+
 @end

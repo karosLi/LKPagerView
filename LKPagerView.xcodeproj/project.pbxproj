@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C557A5B20AC759200F0BCEF /* BasicExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C557A5620AC759200F0BCEF /* BasicExampleViewController.m */; };
+		7C557A5C20AC759200F0BCEF /* PageControlExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C557A5820AC759200F0BCEF /* PageControlExampleViewController.m */; };
+		7C557A5D20AC759300F0BCEF /* TransformerExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C557A5A20AC759200F0BCEF /* TransformerExampleViewController.m */; };
+		7C557A6620AC7BB700F0BCEF /* 4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7C557A5F20AC7BB700F0BCEF /* 4.jpg */; };
+		7C557A6720AC7BB700F0BCEF /* 5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7C557A6020AC7BB700F0BCEF /* 5.jpg */; };
+		7C557A6820AC7BB700F0BCEF /* 7.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7C557A6120AC7BB700F0BCEF /* 7.jpg */; };
+		7C557A6920AC7BB700F0BCEF /* 6.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7C557A6220AC7BB700F0BCEF /* 6.jpg */; };
+		7C557A6A20AC7BB700F0BCEF /* 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7C557A6320AC7BB700F0BCEF /* 2.jpg */; };
+		7C557A6B20AC7BB700F0BCEF /* 3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7C557A6420AC7BB700F0BCEF /* 3.jpg */; };
+		7C557A6C20AC7BB700F0BCEF /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7C557A6520AC7BB700F0BCEF /* 1.jpg */; };
 		7C8AC0FB20A0378100B9E5B0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C8AC0FA20A0378100B9E5B0 /* AppDelegate.m */; };
 		7C8AC0FE20A0378100B9E5B0 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C8AC0FD20A0378100B9E5B0 /* ViewController.m */; };
 		7C8AC10120A0378100B9E5B0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C8AC0FF20A0378100B9E5B0 /* Main.storyboard */; };
@@ -14,7 +24,7 @@
 		7C8AC10620A0378100B9E5B0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C8AC10420A0378100B9E5B0 /* LaunchScreen.storyboard */; };
 		7C8AC10920A0378100B9E5B0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C8AC10820A0378100B9E5B0 /* main.m */; };
 		7C8AC11220A0385000B9E5B0 /* LKPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C8AC11120A0385000B9E5B0 /* LKPageControl.m */; };
-		7C8AC11520A0387700B9E5B0 /* LKPageCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C8AC11420A0387700B9E5B0 /* LKPageCollectionView.m */; };
+		7C8AC11520A0387700B9E5B0 /* LKPagerViewCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C8AC11420A0387700B9E5B0 /* LKPagerViewCollectionView.m */; };
 		7C8AC11820A038BF00B9E5B0 /* LKPagerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C8AC11720A038BF00B9E5B0 /* LKPagerView.m */; };
 		7C8AC11B20A038E200B9E5B0 /* LKPagerViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C8AC11A20A038E200B9E5B0 /* LKPagerViewCell.m */; };
 		7C8AC11E20A0399E00B9E5B0 /* LKPagerViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C8AC11D20A0399E00B9E5B0 /* LKPagerViewLayout.m */; };
@@ -23,6 +33,19 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7C557A5520AC759100F0BCEF /* BasicExampleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicExampleViewController.h; sourceTree = "<group>"; };
+		7C557A5620AC759200F0BCEF /* BasicExampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicExampleViewController.m; sourceTree = "<group>"; };
+		7C557A5720AC759200F0BCEF /* TransformerExampleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransformerExampleViewController.h; sourceTree = "<group>"; };
+		7C557A5820AC759200F0BCEF /* PageControlExampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageControlExampleViewController.m; sourceTree = "<group>"; };
+		7C557A5920AC759200F0BCEF /* PageControlExampleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageControlExampleViewController.h; sourceTree = "<group>"; };
+		7C557A5A20AC759200F0BCEF /* TransformerExampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransformerExampleViewController.m; sourceTree = "<group>"; };
+		7C557A5F20AC7BB700F0BCEF /* 4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 4.jpg; sourceTree = "<group>"; };
+		7C557A6020AC7BB700F0BCEF /* 5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 5.jpg; sourceTree = "<group>"; };
+		7C557A6120AC7BB700F0BCEF /* 7.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 7.jpg; sourceTree = "<group>"; };
+		7C557A6220AC7BB700F0BCEF /* 6.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 6.jpg; sourceTree = "<group>"; };
+		7C557A6320AC7BB700F0BCEF /* 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2.jpg; sourceTree = "<group>"; };
+		7C557A6420AC7BB700F0BCEF /* 3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 3.jpg; sourceTree = "<group>"; };
+		7C557A6520AC7BB700F0BCEF /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpg; sourceTree = "<group>"; };
 		7C8AC0F620A0378100B9E5B0 /* LKPagerView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LKPagerView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C8AC0F920A0378100B9E5B0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7C8AC0FA20A0378100B9E5B0 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -35,8 +58,8 @@
 		7C8AC10820A0378100B9E5B0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7C8AC11020A0385000B9E5B0 /* LKPageControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LKPageControl.h; sourceTree = "<group>"; };
 		7C8AC11120A0385000B9E5B0 /* LKPageControl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LKPageControl.m; sourceTree = "<group>"; };
-		7C8AC11320A0387700B9E5B0 /* LKPageCollectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LKPageCollectionView.h; sourceTree = "<group>"; };
-		7C8AC11420A0387700B9E5B0 /* LKPageCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LKPageCollectionView.m; sourceTree = "<group>"; };
+		7C8AC11320A0387700B9E5B0 /* LKPagerViewCollectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LKPagerViewCollectionView.h; sourceTree = "<group>"; };
+		7C8AC11420A0387700B9E5B0 /* LKPagerViewCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LKPagerViewCollectionView.m; sourceTree = "<group>"; };
 		7C8AC11620A038BF00B9E5B0 /* LKPagerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LKPagerView.h; sourceTree = "<group>"; };
 		7C8AC11720A038BF00B9E5B0 /* LKPagerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LKPagerView.m; sourceTree = "<group>"; };
 		7C8AC11920A038E200B9E5B0 /* LKPagerViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LKPagerViewCell.h; sourceTree = "<group>"; };
@@ -60,6 +83,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7C557A5E20AC7BB700F0BCEF /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				7C557A5F20AC7BB700F0BCEF /* 4.jpg */,
+				7C557A6020AC7BB700F0BCEF /* 5.jpg */,
+				7C557A6120AC7BB700F0BCEF /* 7.jpg */,
+				7C557A6220AC7BB700F0BCEF /* 6.jpg */,
+				7C557A6320AC7BB700F0BCEF /* 2.jpg */,
+				7C557A6420AC7BB700F0BCEF /* 3.jpg */,
+				7C557A6520AC7BB700F0BCEF /* 1.jpg */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		7C8AC0ED20A0378100B9E5B0 = {
 			isa = PBXGroup;
 			children = (
@@ -80,10 +117,17 @@
 			isa = PBXGroup;
 			children = (
 				7C8AC10F20A037AB00B9E5B0 /* LKPagerView */,
+				7C557A5520AC759100F0BCEF /* BasicExampleViewController.h */,
+				7C557A5620AC759200F0BCEF /* BasicExampleViewController.m */,
+				7C557A5920AC759200F0BCEF /* PageControlExampleViewController.h */,
+				7C557A5820AC759200F0BCEF /* PageControlExampleViewController.m */,
+				7C557A5720AC759200F0BCEF /* TransformerExampleViewController.h */,
+				7C557A5A20AC759200F0BCEF /* TransformerExampleViewController.m */,
 				7C8AC0F920A0378100B9E5B0 /* AppDelegate.h */,
 				7C8AC0FA20A0378100B9E5B0 /* AppDelegate.m */,
 				7C8AC0FC20A0378100B9E5B0 /* ViewController.h */,
 				7C8AC0FD20A0378100B9E5B0 /* ViewController.m */,
+				7C557A5E20AC7BB700F0BCEF /* Resources */,
 				7C8AC0FF20A0378100B9E5B0 /* Main.storyboard */,
 				7C8AC10220A0378100B9E5B0 /* Assets.xcassets */,
 				7C8AC10420A0378100B9E5B0 /* LaunchScreen.storyboard */,
@@ -98,8 +142,8 @@
 			children = (
 				7C8AC11020A0385000B9E5B0 /* LKPageControl.h */,
 				7C8AC11120A0385000B9E5B0 /* LKPageControl.m */,
-				7C8AC11320A0387700B9E5B0 /* LKPageCollectionView.h */,
-				7C8AC11420A0387700B9E5B0 /* LKPageCollectionView.m */,
+				7C8AC11320A0387700B9E5B0 /* LKPagerViewCollectionView.h */,
+				7C8AC11420A0387700B9E5B0 /* LKPagerViewCollectionView.m */,
 				7C8AC11620A038BF00B9E5B0 /* LKPagerView.h */,
 				7C8AC11720A038BF00B9E5B0 /* LKPagerView.m */,
 				7C8AC11920A038E200B9E5B0 /* LKPagerViewCell.h */,
@@ -172,9 +216,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C557A6B20AC7BB700F0BCEF /* 3.jpg in Resources */,
+				7C557A6920AC7BB700F0BCEF /* 6.jpg in Resources */,
+				7C557A6620AC7BB700F0BCEF /* 4.jpg in Resources */,
+				7C557A6720AC7BB700F0BCEF /* 5.jpg in Resources */,
 				7C8AC10620A0378100B9E5B0 /* LaunchScreen.storyboard in Resources */,
+				7C557A6820AC7BB700F0BCEF /* 7.jpg in Resources */,
 				7C8AC10320A0378100B9E5B0 /* Assets.xcassets in Resources */,
+				7C557A6A20AC7BB700F0BCEF /* 2.jpg in Resources */,
 				7C8AC10120A0378100B9E5B0 /* Main.storyboard in Resources */,
+				7C557A6C20AC7BB700F0BCEF /* 1.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -187,13 +238,16 @@
 			files = (
 				7C8AC0FE20A0378100B9E5B0 /* ViewController.m in Sources */,
 				7C8AC10920A0378100B9E5B0 /* main.m in Sources */,
+				7C557A5B20AC759200F0BCEF /* BasicExampleViewController.m in Sources */,
 				7C8AC0FB20A0378100B9E5B0 /* AppDelegate.m in Sources */,
 				7C8AC12420A039E000B9E5B0 /* LKPagerViewTransformer.m in Sources */,
-				7C8AC11520A0387700B9E5B0 /* LKPageCollectionView.m in Sources */,
+				7C557A5D20AC759300F0BCEF /* TransformerExampleViewController.m in Sources */,
+				7C8AC11520A0387700B9E5B0 /* LKPagerViewCollectionView.m in Sources */,
 				7C8AC11B20A038E200B9E5B0 /* LKPagerViewCell.m in Sources */,
 				7C8AC11E20A0399E00B9E5B0 /* LKPagerViewLayout.m in Sources */,
 				7C8AC11220A0385000B9E5B0 /* LKPageControl.m in Sources */,
 				7C8AC12120A039BB00B9E5B0 /* LKPagerViewLayoutAttributes.m in Sources */,
+				7C557A5C20AC759200F0BCEF /* PageControlExampleViewController.m in Sources */,
 				7C8AC11820A038BF00B9E5B0 /* LKPagerView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

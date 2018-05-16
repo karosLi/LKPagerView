@@ -1,14 +1,14 @@
 //
-//  LKPageCollectionView.m
+//  LKPagerViewCollectionView.h
 //  LKPagerView
 //
 //  Created by karos li on 2018/5/7.
 //  Copyright © 2018年 karos. All rights reserved.
 //
 
-#import "LKPageCollectionView.h"
+#import "LKPagerViewCollectionView.h"
 
-@implementation LKPageCollectionView
+@implementation LKPagerViewCollectionView
 
 - (BOOL)scrollsToTop {
     return NO;
@@ -31,13 +31,13 @@
 
 - (instancetype)initWithFrame:(CGRect)frame collectionViewLayout:(UICollectionViewLayout *)layout {
     self = [super initWithFrame:frame collectionViewLayout:layout];
-    
+    [self commonInit];
     return self;
 }
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
-    
+    [self commonInit];
     return self;
 }
 
@@ -54,6 +54,7 @@
     }
    
     self.scrollsToTop = NO;
+    self.pagingEnabled = NO;
 }
 
 @end

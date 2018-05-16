@@ -126,7 +126,7 @@
                 // This page is way off-screen to the left.
                 alpha = 0;
                 zIndex = 0;
-            } else if (-1 <= position && position < 0) { // [-1,0]
+            } else if (-1 <= position && position <= 0) { // [-1,0]
                 // Use the default slide transition when moving to the left page
                 alpha = 1;
                 transform.tx = 0;
@@ -148,7 +148,7 @@
                 transform.a = scaleFactor;
                 transform.d = scaleFactor;
                 zIndex = 0;
-            } else if (1 <= position && position < INFINITY) { // (1,+Infinity]
+            } else if (1 <= position && position <= INFINITY) { // (1,+Infinity]
                 // This page is way off-screen to the right.
                 alpha = 0;
                 zIndex = 0;
@@ -193,7 +193,7 @@
                 return;
             }
             CGFloat position1 = MIN(MAX(-position,-1) ,1);
-            CGFloat rotation = sin(position*(M_PI)*0.5)*(M_PI)*0.25*1.5;
+            CGFloat rotation = sin(position1*(M_PI)*0.5)*(M_PI)*0.25*1.5;
             CGFloat translationZ = -itemSpacing * 0.5 * fabs(position1);
             CATransform3D transform3D = CATransform3DIdentity;
             transform3D.m34 = -0.002;
@@ -211,7 +211,7 @@
             // http://ronnqvi.st/translate-rotate-translate/
             NSInteger zIndex = 0;
             CGAffineTransform transform = CGAffineTransformIdentity;
-            if (-5 <= position && position < 5) {
+            if (-5 <= position && position <= 5) {
                 CGFloat itemSpacing = attributes.bounds.size.width+[self proposedInteritemSpacing];
                 CGFloat count = 14;
                 CGFloat circle = M_PI * 2.0;
@@ -239,7 +239,7 @@
             // http://ronnqvi.st/translate-rotate-translate/
             NSInteger zIndex = 0;
             CGAffineTransform transform = CGAffineTransformIdentity;
-            if (-5 <= position && position < 5) {
+            if (-5 <= position && position <= 5) {
                 CGFloat itemSpacing = attributes.bounds.size.width+[self proposedInteritemSpacing];
                 CGFloat count = 14;
                 CGFloat circle = M_PI * 2.0;
@@ -260,10 +260,10 @@
         }
         case LKPagerViewTransformerTypeCubic:
         {
-            if (-INFINITY <= position && position < -1) { // [-Infinity,-1)
+            if (-INFINITY <= position && position <= -1) { // [-Infinity,-1]
                 // This page is way off-screen to the left.
                 attributes.alpha = 0;
-            } else if (-1 <= position && position < 0) { // [-1,0]
+            } else if (-1 < position && position < 1) { // (-1,1)
                 attributes.alpha = 1;
                 attributes.zIndex = (int)((1-position) * 10);
                 CGFloat direction = position < 0 ? 1 : -1;
@@ -282,7 +282,8 @@
                     transform3D = CATransform3DRotate(transform3D, theta, 1, 0, 0); // RotateX
                     transform3D = CATransform3DTranslate(transform3D,0, -direction*radius*0.5, 0); // BackwardY
                 }
-            } else if (1 <= position && position < INFINITY) { // (1,+Infinity]
+                attributes.transform3D = transform3D;
+            } else if (1 <= position && position <= INFINITY) { // [1,+Infinity]
                 // This page is way off-screen to the right.
                 attributes.alpha = 0;
             } else {

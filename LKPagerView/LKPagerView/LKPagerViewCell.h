@@ -10,6 +10,7 @@
 
 @interface LKPagerViewCell : UICollectionViewCell
 
-
+@property (nonatomic, strong, readonly) UILabel *textLabel;
+@property (nonatomic, strong, readonly) UIImageView *imageView;
 
 @end

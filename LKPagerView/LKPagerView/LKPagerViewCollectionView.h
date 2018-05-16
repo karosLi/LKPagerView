@@ -1,5 +1,5 @@
 //
-//  LKPageCollectionView.h
+//  LKPagerViewCollectionView.h
 //  LKPagerView
 //
 //  Created by karos li on 2018/5/7.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LKPageCollectionView : UICollectionView
+@interface LKPagerViewCollectionView : UICollectionView
 
 @end
