@@ -11,24 +11,24 @@
 @interface LKPageControl : UIControl
 
 /// The number of page indicators of the page control. Default is 0.
-@property (nonatomic, assign) NSUInteger numberOfPages;
+@property (nonatomic, assign) NSInteger numberOfPages;
 
 /// The current page, highlighted by the page control. Default is 0.
-@property (nonatomic, assign) NSUInteger currentPage;
+@property (nonatomic, assign) NSInteger currentPage;
 
 /// The spacing to use of page indicators in the page control.
-@property (nonatomic, assign) NSUInteger itemSpacing;
+@property (nonatomic, assign) NSInteger itemSpacing;
 
 /// The spacing to use between page indicators in the page control.
-@property (nonatomic, assign) NSUInteger interitemSpacing;
+@property (nonatomic, assign) NSInteger interitemSpacing;
 
 /// The distance that the page indicators is inset from the enclosing page control.
 @property (nonatomic, assign) UIEdgeInsets contentInsets;
 
 /// The horizontal alignment of content within the control’s bounds. Default is center.
-@property (nonatomic, assign) UIControlContentHorizontalAlignment contentHorizontalAlignment;
+//@property (nonatomic, assign) UIControlContentHorizontalAlignment contentHorizontalAlignment;
 
-/// Hide the indicator if there is only one page. default is YES
+/// Hide the indicator if there is only one page. default is NO
 @property (nonatomic, assign) BOOL hidesForSinglePage;
 
 

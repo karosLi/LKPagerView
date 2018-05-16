@@ -52,9 +52,10 @@
 }
 
 - (void)commonInit {
+    self.itemSpacing = 6;
+    self.interitemSpacing = 6;
     self.contentInsets = UIEdgeInsetsZero;
     self.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
-    self.hidesForSinglePage = YES;
     self.strokeColors = [NSMutableDictionary dictionary];
     self.fillColors = [NSMutableDictionary dictionary];
     self.paths = [NSMutableDictionary dictionary];
@@ -82,22 +83,26 @@
     NSUInteger spacing = self.interitemSpacing;
     __block CGFloat x = 0;
     
+#ifdef __IPHONE_11_0
     if (@available(iOS 11.0, *)) {
-        if (self.contentHorizontalAlignment == UIControlContentHorizontalAlignmentLeading) {
+        if (self.contentHorizontalAlignment == UIControlContentHorizontalAlignmentLeading
+            || self.contentHorizontalAlignment == UIControlContentHorizontalAlignmentLeft) {
             x = 0;
-        } else if (self.contentHorizontalAlignment == UIControlContentHorizontalAlignmentTrailing) {
-            CGFloat contentWidth = diameter * self.numberOfPages + (self.numberOfPages-1)*spacing;
-            x = self.contentView.frame.size.width - contentWidth;
-        }
-    } else {
-        if (self.contentHorizontalAlignment == UIControlContentHorizontalAlignmentLeft) {
-            x = 0;
-        } else if (self.contentHorizontalAlignment == UIControlContentHorizontalAlignmentRight) {
+        } else if (self.contentHorizontalAlignment == UIControlContentHorizontalAlignmentTrailing
+                   || self.contentHorizontalAlignment == UIControlContentHorizontalAlignmentRight) {
             CGFloat contentWidth = diameter * self.numberOfPages + (self.numberOfPages-1)*spacing;
             x = self.contentView.frame.size.width - contentWidth;
         }
     }
-    
+
+#else
+    if (self.contentHorizontalAlignment == UIControlContentHorizontalAlignmentLeft) {
+        x = 0;
+    } else if (self.contentHorizontalAlignment == UIControlContentHorizontalAlignmentRight) {
+        CGFloat contentWidth = diameter * self.numberOfPages + (self.numberOfPages-1)*spacing;
+        x = self.contentView.frame.size.width - contentWidth;
+    }
+#endif
     if (self.contentHorizontalAlignment == UIControlContentHorizontalAlignmentCenter
         || self.contentHorizontalAlignment == UIControlContentHorizontalAlignmentFill) {
         CGFloat midX = CGRectGetMidX(self.contentView.bounds);
@@ -116,18 +121,23 @@
 }
 
 #pragma mark - public method
-- (void)setNumberOfPages:(NSUInteger)numberOfPages {
+- (void)setNumberOfPages:(NSInteger)numberOfPages {
     _numberOfPages = numberOfPages;
-    [self setNeedsUpdateIndicators];
+    [self setNeedsCreateIndicators];
 }
 
-- (void)setCurrentPage:(NSUInteger)currentPage {
+- (void)setCurrentPage:(NSInteger)currentPage {
     _currentPage = currentPage;
     [self setNeedsUpdateIndicators];
 }
 
-- (void)setItemSpacing:(NSUInteger)itemSpacing {
+- (void)setItemSpacing:(NSInteger)itemSpacing {
     _itemSpacing = itemSpacing;
+    [self setNeedsUpdateIndicators];
+}
+
+- (void)setInteritemSpacing:(NSInteger)interitemSpacing {
+    _interitemSpacing = interitemSpacing;
     [self setNeedsLayout];
 }
 
@@ -246,6 +256,7 @@
 }
 
 - (void)setNeedsCreateIndicators {
+    self.needsCreateIndicators = YES;
     dispatch_async(dispatch_get_main_queue(), ^{
         [self createIndicatorsIfNecessary];
     });

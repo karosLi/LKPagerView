@@ -96,11 +96,11 @@ static void *kvoContext = &kvoContext;
     if (!_textLabel) {
         UIView *view = [UIView new];
         view.userInteractionEnabled = NO;
-        view.backgroundColor = [UIColor colorWithWhite:1 alpha:0.6];
+        view.backgroundColor = [UIColor colorWithWhite:0 alpha:0.6];
         
         UILabel *textLabel = [UILabel new];
         textLabel.textColor = [UIColor whiteColor];
-        textLabel.font = [UIFont systemFontOfSize:16];
+        textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
         [self.contentView addSubview:view];
         [view addSubview:textLabel];
         [textLabel addObserver:self forKeyPath:@"font" options:NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew context:kvoContext];
