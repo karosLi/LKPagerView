@@ -7,6 +7,7 @@
 //
 
 #import "BasicExampleViewController.h"
+#import <CoreGraphics/CoreGraphics.h>
 #import "LKPagerView.h"
 
 @interface BasicExampleViewController () <UITableViewDataSource,UITableViewDelegate,LKPagerViewDataSource,LKPagerViewDelegate>
@@ -167,10 +168,25 @@
 - (LKPagerViewCell *)pagerView:(LKPagerView *)pagerView cellForItemAtIndex:(NSInteger)index
 {
     LKPagerViewCell *cell = [pagerView dequeueReusableCellWithReuseIdentifier:@"cell" atIndex:index];
-    cell.imageView.image = [UIImage imageNamed:self.imageNames[index]];
+    cell.imageView.image = [UIImage imageNamed:self.imageNames[index]]; // 这句解码是在主线程，会耗CPU，所以会看到第一次我们进来的时候会卡顿一次，一般项目里面会使用图片库来异步解码并保存解码后的图片数据的。
     cell.imageView.contentMode = UIViewContentModeScaleAspectFill;
     cell.imageView.clipsToBounds = YES;
     cell.textLabel.text = [NSString stringWithFormat:@"%@%@",@(index),@(index)];
+    
+// 如果纯设置颜色不会卡顿
+//    int R = (arc4random() % 256) ;
+//    int G = (arc4random() % 256) ;
+//    int B = (arc4random() % 256) ;
+//    [cell setBackgroundColor:[UIColor colorWithRed:R/255.0 green:G/255.0 blue:B/255.0 alpha:1]];
+    
+// 如果异步解码也不会卡顿
+//    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+//        UIImage *decodedImage = [self decodedImageWithImage:[UIImage imageNamed:self.imageNames[index]]];
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            cell.imageView.image = decodedImage;
+//        });
+//    });
+    
     return cell;
 }
 
@@ -212,6 +228,45 @@
         }
         default:
             break;
+    }
+}
+
+- (nullable UIImage *)decodedImageWithImage:(nullable UIImage *)image {
+    // autorelease the bitmap context and all vars to help system to free memory when there are memory warning.
+    @autoreleasepool{
+        
+        CGImageRef imageRef = image.CGImage;
+        CGColorSpaceRef colorspaceRef = CGImageGetColorSpace(imageRef);
+        
+        size_t width = CGImageGetWidth(imageRef);
+        size_t height = CGImageGetHeight(imageRef);
+        size_t bytesPerRow = 8 * width;
+        
+        // kCGImageAlphaNone is not supported in CGBitmapContextCreate.
+        // Since the original image here has no alpha info, use kCGImageAlphaNoneSkipLast
+        // to create bitmap graphics contexts without alpha info.
+        CGContextRef context = CGBitmapContextCreate(NULL,
+                                                     width,
+                                                     height,
+                                                     8,
+                                                     bytesPerRow,
+                                                     colorspaceRef,
+                                                     kCGBitmapByteOrderDefault|kCGImageAlphaNoneSkipLast);
+        if (context == NULL) {
+            return image;
+        }
+        
+        // Draw the image into the context and retrieve the new bitmap image without alpha
+        CGContextDrawImage(context, CGRectMake(0, 0, width, height), imageRef);
+        CGImageRef imageRefWithoutAlpha = CGBitmapContextCreateImage(context);
+        UIImage *imageWithoutAlpha = [UIImage imageWithCGImage:imageRefWithoutAlpha
+                                                         scale:image.scale
+                                                   orientation:image.imageOrientation];
+        
+        CGContextRelease(context);
+        CGImageRelease(imageRefWithoutAlpha);
+        
+        return imageWithoutAlpha;
     }
 }
 
